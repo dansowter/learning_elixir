@@ -82,4 +82,33 @@ defmodule AnonymousFunctionsTest do
     assert game.(15) == "FizzBuzz"
     assert game.(16) == 16
   end
+
+  test "Exercise: Functions-4" do
+    # Write a function prefix that takes a string.
+    # It should return a new function that takes a second string.
+    # When that second function is called, it will return a string
+    # containing the first string, a space, and the second string.
+    # iex> mrs = prefix.("Mrs") #Function<erl_eval.6.82930912>
+    # iex> mrs.("Smith") "Mrs Smith"
+    # iex> prefix.("Elixir").("Rocks") "Elixir Rocks"
+
+    prefix = fn first ->
+      fn second ->
+        first <> " " <> second
+      end
+    end
+
+    mrs = prefix.("Mrs")
+    assert mrs.("Smith") == "Mrs Smith"
+    assert prefix.("Elixir").("Rocks") == "Elixir Rocks"
+  end
+
+  test "Exercise: Functions-5" do
+    # Use the &... notation to rewrite the following.
+    # – Enum.map [1,2,3,4], fn x -> x + 2 end
+    # – Enum.each [1,2,3,4], fn x -> IO.inspect x end
+
+    assert Enum.map([1,2,3,4], &(&1 + 2)) == Enum.map([1,2,3,4], fn x -> x + 2 end)
+    # assert Enum.each([1,2,3,4], &IO.inspect/1) == Enum.each([1,2,3,4], fn x -> IO.inspect x end)
+  end
 end
