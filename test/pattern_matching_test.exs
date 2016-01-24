@@ -1,6 +1,5 @@
 defmodule PatternMatchingTest do
   use ExUnit.Case
-  doctest LearningElixir
 
   test "matching values" do
     [a: x] = [a: 123]
@@ -63,7 +62,8 @@ defmodule PatternMatchingTest do
   end
 
   test "Exercise: PatternMatching-3" do
-    # If you assume the variable a initially contains the value 2, which of the following will match?
+    # If you assume the variable a initially contains the value 2,
+    # which of the following will match?
     # – [a,b,a]=[1,2,3]
     # – [a,b,a]=[1,1,2]
     # – a=1
@@ -72,6 +72,7 @@ defmodule PatternMatchingTest do
     # – ^a = 1
     # – ^a=2-a
 
+    # MatchError tests pass. Commented to avoid compiler warnings.
     # a = 2
     # match = fn ->
     #   [a,b,a]=[1,2,3]
