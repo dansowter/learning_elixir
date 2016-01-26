@@ -15,16 +15,8 @@ defmodule MyList do
     nil
   end
 
-  def max([ max ]) do
-    max
-  end
-
-  def max([ max, head | tail ]) when max > head do
-    max([ max | tail ])
-  end
-
-  def max([ _max, head | tail ]) do
-    max([ head | tail ])
+  def max(collection) do
+    Enum.max collection
   end
 
   def span(a, b) when b < a do
@@ -32,7 +24,11 @@ defmodule MyList do
   end
 
   def span(a, b) do
-    a..b
-    |> Enum.map(&(&1))
+    Enum.to_list a..b
+  end
+
+  def primes_up_to(n) do
+    range = span(2, n)
+    range -- (for a <- range, b <- range, a <= b, a*b <= n, do: a * b)
   end
 end
